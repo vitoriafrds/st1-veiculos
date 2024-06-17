@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Evento {
+public class DetalheVeiculo {
     @JsonProperty("id_veiculo")
     private String idVeiculo;
 }

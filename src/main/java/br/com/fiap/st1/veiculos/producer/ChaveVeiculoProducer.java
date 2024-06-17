@@ -1,6 +1,6 @@
 package br.com.fiap.st1.veiculos.producer;
 
-import br.com.fiap.st1.veiculos.model.Evento;
+import br.com.fiap.st1.veiculos.model.DetalheVeiculo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,7 @@ public class ChaveVeiculoProducer {
         this.template = template;
     }
 
-    public void criar(Evento evento) {
+    public void criar(DetalheVeiculo evento) {
         try {
             template.convertAndSend(
                     "gerenciamento-chave-exchange",

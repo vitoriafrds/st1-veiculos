@@ -9,31 +9,32 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
+import java.util.Optional;
+import java.util.UUID;
+
 @Slf4j
 @Service
 public class VeiculoService {
     private VeiculoRepository repository;
     private VeiculoMapper mapper;
 
-    private ChaveVeiculoService chaveVeiculoService;
-
     @Autowired
-    public VeiculoService(VeiculoRepository repository, VeiculoMapper mapper, ChaveVeiculoService chaveVeiculoService) {
+    public VeiculoService(VeiculoRepository repository, VeiculoMapper mapper) {
         this.repository = repository;
         this.mapper = mapper;
-        this.chaveVeiculoService = chaveVeiculoService;
     }
 
     public Veiculo cadastrar(VeiculoRequest request) {
         VeiculoEntity entityToSave = mapper.from(request);
         VeiculoEntity savedEntity = repository.save(entityToSave);
 
-        criarChave(savedEntity.getId().toString());
-
         return mapper.from(savedEntity);
     }
 
-    private void criarChave(String idVeiculo) {
-        chaveVeiculoService.criarChave(idVeiculo);
+    public Optional<Veiculo> consultarPorId(String idVeiculo) {
+        Optional<VeiculoEntity> veiculo = repository.findById(UUID.fromString(idVeiculo));
+
+        return veiculo.map(veiculoEntity -> mapper.from(veiculoEntity));
     }
 }
