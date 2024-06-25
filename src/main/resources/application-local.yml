@@ -15,3 +15,8 @@ spring:
 
 application:
   endpoint-chave-url: http://localhost:8081/chaves
+
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: true

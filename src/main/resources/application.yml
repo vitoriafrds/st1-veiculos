@@ -7,7 +7,12 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     show-sql: true
 application:
   endpoint-chave-url: http://localhost:8090/chaves
+
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: true
