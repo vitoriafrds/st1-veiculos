@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:mysql://mysql:3306/veiculos
+    username: root
+    password: 123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+application:
+  endpoint-chave-url: http://localhost:8090/chaves
+
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: true
